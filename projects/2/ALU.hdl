@@ -41,5 +41,39 @@ CHIP ALU {
         ng;      // if (out < 0)  equals 1, else 0
 
     PARTS:
-    //// Replace this comment with your code.
+        // Zero x?
+        Mux16(a = x[0..15], b = false, sel = zx, out = xint);    
+            
+        // Invert x
+        Not16(in = xint, out= notx);
+
+        // Select inverted x?
+        Mux16(a = xint, b = notx, sel = nx, out = finalx);
+        
+        // Zero y?
+        Mux16(a = y[0..15], b = false, sel = zy, out = yint);    
+            
+        // Invert y
+        Not16(in = yint, out= noty);
+
+        // Select inverted y?
+        Mux16(a = yint, b = noty, sel = ny, out = finaly);
+       
+        // x + y or x & y
+        And16(a = finalx, b = finaly, out = xandy);
+        Add16(a = finalx, b = finaly, out = sumxy);
+
+        Mux16(a=xandy, b = sumxy, sel = f, out=iout);
+
+        // Invert result
+        Not16(in=iout, out = notiout);
+
+        // Select inverted result?
+        Mux16(a = iout, b = notiout, sel = no, out=out, out[0..7]=outl, out[8..15]=outh, out[15]= ng);
+
+        // zr
+        Or8Way(in = outl, out = zrl);
+        Or8Way(in = outh, out = zrm);
+        Or(a = zrl, b = zrm, out = zri);
+        Not(in = zri, out = zr);
 }

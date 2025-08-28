@@ -11,5 +11,20 @@ CHIP Add16 {
     OUT out[16];
 
     PARTS:
-    //// Replace this comment with your code.
+    HalfAdder(a=a[00], b=b[00], carry=icarry1, sum=out[00]);
+    FullAdder(a=a[01], b=b[01], c=icarry1, carry=icarry2, sum=out[01]);
+    FullAdder(a=a[02], b=b[02], c=icarry2, carry=icarry3, sum=out[02]);
+    FullAdder(a=a[03], b=b[03], c=icarry3, carry=icarry4, sum=out[03]);
+    FullAdder(a=a[04], b=b[04], c=icarry4, carry=icarry5, sum=out[04]);
+    FullAdder(a=a[05], b=b[05], c=icarry5, carry=icarry6, sum=out[05]);
+    FullAdder(a=a[06], b=b[06], c=icarry6, carry=icarry7, sum=out[06]);
+    FullAdder(a=a[07], b=b[07], c=icarry7, carry=icarry8, sum=out[07]);
+    FullAdder(a=a[08], b=b[08], c=icarry8, carry=icarry9, sum=out[08]);
+    FullAdder(a=a[09], b=b[09], c=icarry9, carry=icarry10, sum=out[09]);
+    FullAdder(a=a[10], b=b[10], c=icarry10, carry=icarry11, sum=out[10]);
+    FullAdder(a=a[11], b=b[11], c=icarry11, carry=icarry12, sum=out[11]);
+    FullAdder(a=a[12], b=b[12], c=icarry12, carry=icarry13, sum=out[12]);
+    FullAdder(a=a[13], b=b[13], c=icarry13, carry=icarry14, sum=out[13]);
+    FullAdder(a=a[14], b=b[14], c=icarry14, carry=icarry15, sum=out[14]);
+    FullAdder(a=a[15], b=b[15], c=icarry15, carry=icarry16, sum=out[15]);
 }
