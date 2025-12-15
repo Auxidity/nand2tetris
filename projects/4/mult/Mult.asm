@@ -7,4 +7,21 @@
 // (R0, R1, R2 refer to RAM[0], RAM[1], and RAM[2], respectively.)
 // The algorithm is based on repetitive addition.
 
-//// Replace this comment with your code.
+//// R0 is being actively modified. Probably a bad idea in practice. Could store the counter on a random register instead
+@2
+M=0
+(LOOP)
+@0
+D=M
+M=D-1
+@END
+D;JEQ
+@1
+D=M 
+@2
+M=D+M 
+@LOOP
+0;JMP
+(END)
+@END
+0;JMP
